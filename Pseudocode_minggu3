@@ -1,0 +1,107 @@
+ALGORITMA Cek_Bilangan_Prima
+{ Mengecek apakah suatu bilangan merupakan bilangan prima atau bukan }
+
+INPUT:
+    n : integer    { bilangan yang akan dicek }
+
+OUTPUT:
+    Pesan "Prima" atau "Bukan Prima"
+
+DEKLARASI:
+    i : integer                { counter perulangan }
+    isPrima : boolean          { flag untuk menandai bilangan prima }
+    batas : integer            { batas atas pengecekan }
+
+DESKRIPSI:
+    { Kasus khusus: bilangan <= 1 bukan prima }
+    IF n <= 1 THEN
+        OUTPUT("Bukan Prima")
+    ELSE
+        { Inisialisasi }
+        isPrima ← true
+        batas ← floor(sqrt(n))    { pengecekan cukup sampai akar kuadrat n }
+        i ← 2
+        
+        { Proses pengecekan faktor pembagi }
+        WHILE i <= batas AND isPrima = true DO
+            IF n MOD i = 0 THEN
+                isPrima ← false    { ditemukan faktor pembagi }
+            ELSE
+                i ← i + 1
+            ENDIF
+        ENDWHILE
+        
+        { Menentukan output berdasarkan hasil pengecekan }
+        IF isPrima = true THEN
+            OUTPUT("Bilangan Prima")
+        ELSE
+            OUTPUT("Bukan Bilangan Prima")
+        ENDIF
+    ENDIF
+
+
+
+
+
+
+    PROGRAM Menentukan_Jenis_Akar_Persamaan_Kuadrat
+{ Program untuk menentukan jenis akar persamaan kuadrat ax² + bx + c = 0
+  berdasarkan nilai diskriminan (D) }
+
+DEKLARASI
+    a, b, c : real    { koefisien persamaan kuadrat }
+    D : real           { nilai diskriminan }
+
+ALGORITMA:
+    MULAI
+        { Input nilai koefisien }
+        INPUT(a, b, c)
+        
+        { Validasi apakah persamaan merupakan persamaan kuadrat }
+        IF a = 0 THEN
+            OUTPUT("Bukan Persamaan Kuadrat (a tidak boleh 0)")
+        ELSE
+            { Hitung nilai diskriminan }
+            D ← (b * b) - (4 * a * c)
+            
+            { Menentukan jenis akar berdasarkan nilai D }
+            IF D >= 0 THEN
+                IF D > 0 THEN
+                    OUTPUT("Akar Real dan Berlainan")
+                ELSE    { D = 0 }
+                    OUTPUT("Akar Real dan Kembar")
+                ENDIF
+            ELSE    { D < 0 }
+                OUTPUT("Akar Imajiner / Tidak Real")
+            ENDIF
+            
+            OUTPUT("Selesai")
+        ENDIF
+    SELESAI
+
+
+
+    ALGORITMA Menghitung_Faktorial
+{ Menghitung nilai faktorial dari suatu bilangan n (n!) }
+
+DEKLARASI
+    n, i : integer    { bilangan yang akan dihitung faktorialnya dan counter }
+    faktorial : integer    { hasil perhitungan faktorial }
+
+DESKRIPSI
+    READ(n)
+    
+    { Inisialisasi nilai awal }
+    faktorial ← 1
+    
+    { Cek apakah n = 0 atau n = 1 }
+    IF n = 0 OR n = 1 THEN
+        OUTPUT("Hasil faktorial = 1")
+    ELSE
+        { Proses perhitungan faktorial dengan perulangan }
+        FOR i ← 1 TO n DO
+            faktorial ← faktorial * i
+        ENDFOR
+        
+        OUTPUT("Hasil faktorial = ", faktorial)
+    ENDIF
